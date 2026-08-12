@@ -1,0 +1,144 @@
+//exercicio 1/3: DLL//
+class1.cs:
+namespace BibliotecaConversao
+{
+    public class Conversao
+    {
+        public double CelsiusParaFahrenheit(double celsius)
+        {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        public double MetrosParaQuilometros(double metros)
+        {
+            return metros / 1000;
+        }
+
+        public double ConverterMoeda(double valor, double taxaCambio)
+        {
+            return valor * taxaCambio;
+        }
+    }
+}
+
+//exercicio 2: projeto do console usando a DLL acima// 
+program.cs: 
+namespace BibliotecaConversao
+{
+    public class Conversao
+    {
+        public double CelsiusParaFahrenheit(double celsius)
+        {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        public double MetrosParaQuilometros(double metros)
+        {
+            return metros / 1000;
+        }
+
+        public double ConverterMoeda(double valor, double taxaCambio)
+        {
+            return valor * taxaCambio;
+        }
+    }
+}
+
+//exercicio 6: DLL chamada BibliotecaFinanceira// 
+class1.cs: 
+namespace BibliotecaFinanceira
+{
+    public class CalculadoraJuros
+    {
+        public double JurosSimples(double capital, double taxa, double tempo)
+        {
+            return capital * taxa * tempo;
+        }
+
+        internal double CalculoInterno(double valor)
+        {
+            return valor * 2;
+        }
+    }
+}
+
+//projeto console//
+program.cs: 
+using BibliotecaFinanceira;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        CalculadoraJuros calculadora = new CalculadoraJuros();
+
+        double juros = calculadora.JurosSimples(1000, 0.05, 2);
+
+        Console.WriteLine($"Juros simples: {juros}");
+
+        double resultado = calculadora.CalculoInterno(10);
+
+        Console.WriteLine($"Resultado interno: {resultado}");
+    }
+}
+
+//exercicio 7: Criar uma DLL chamada:BibliotecaValidacoes// 
+Validador.cs: 
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BibliotecaValidacoes
+{
+    public class Validador
+    {
+        public bool ValidadorCPF(string cpf)
+        {
+            return cpf.Length == 11;
+        }
+
+        public bool ValidadorEmail(string email, string dominio)
+        {
+            return email.Contains("@") && email.EndsWith(dominio);
+        }
+
+        public bool ValidadorSenha(string senha)
+        {
+            return senha.Length >= 8;
+        }
+    }
+}
+
+program.cs: 
+using BibliotecaValidacoes;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Validador validador = new Validador();
+
+        Console.Write("Digite o CPF: ");
+        string cpf = Console.ReadLine();
+
+        Console.Write("Digite o e-mail: ");
+        string email = Console.ReadLine();
+
+        Console.Write("Digite a senha: ");
+        string senha = Console.ReadLine();
+
+        bool cpfValido = validador.ValidadorCPF(cpf);
+        bool emailValido = validador.ValidadorEmail(email);
+        bool senhaValida = validador.ValidadorSenha(senha);
+
+        Console.WriteLine();
+
+        Console.WriteLine($"CPF válido: {cpfValido}");
+        Console.WriteLine($"E-mail válido: {emailValido}");
+        Console.WriteLine($"Senha válida: {senhaValida}");
+
+        Console.ReadKey();
+    }
+}
+
+

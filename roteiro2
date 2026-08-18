@@ -1,0 +1,137 @@
+//exercicio 1// 
+using System;
+using System.Linq;
+using System.Xml.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        XDocument doc = XDocument.Load("alunos.xml");
+
+        var alunos = doc.Descendants("aluno");
+
+        foreach (var aluno in alunos)
+        {
+            string nome = aluno.Element("nome").Value;
+            string curso = aluno.Element("curso").Value;
+
+            Console.WriteLine($"Nome: {nome}");
+            Console.WriteLine($"Curso: {curso}");
+            Console.WriteLine();
+        }
+    }
+}
+
+//exercicio 2// 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
+
+public class Produto
+{
+    public string Nome { get; set; }
+    public double Preco { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Produto> produtos = new List<Produto>
+        {
+            new Produto
+            {
+                Nome = "Mouse",
+                Preco = 199.90
+            },
+
+            new Produto
+            {
+                Nome = "Teclado",
+                Preco = 299.90
+            },
+
+            new Produto
+            {
+                Nome = "Headset",
+                Preco = 249.90
+            }
+        };
+
+        XmlSerializer serializer =
+            new XmlSerializer(typeof(List<Produto>));
+
+        using (StreamWriter writer =
+               new StreamWriter("produtos.xml"))
+        {
+            serializer.Serialize(writer, produtos);
+        }
+
+        Console.WriteLine("XML criado com sucesso!");
+    }
+}
+
+//exercicio 3// 
+using System;
+using System.Xml.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        XDocument doc = XDocument.Load("estoque.xml");
+
+        var item = doc.Descendants("item")
+                       .FirstOrDefault(x =>
+                           x.Element("nome").Value == "Mouse");
+
+        if (item != null)
+        {
+            item.Element("quantidade").Value = "10";
+        }
+
+        doc.Save("estoque.xml");
+
+        Console.WriteLine("Estoque atualizado!");
+    }
+}
+
+//exercicio 4// 
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+class Program
+{
+    static async Task Main()
+    {
+        string url =
+            "https://www.w3schools.com/xml/simple.xml";
+
+        using HttpClient client = new HttpClient();
+
+        string response =
+            await client.GetStringAsync(url);
+
+        XDocument doc =
+            XDocument.Parse(response);
+
+        var foods = doc.Descendants("food");
+
+        foreach (var food in foods)
+        {
+            string nome =
+                food.Element("name")?.Value;
+
+            string preco =
+                food.Element("price")?.Value;
+
+            Console.WriteLine($"Nome: {nome}");
+            Console.WriteLine($"Preço: {preco}");
+            Console.WriteLine();
+        }
+    }
+}

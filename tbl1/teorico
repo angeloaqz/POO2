@@ -1,0 +1,26 @@
+//questao 1 - etapa 1//
+Problema: a empresa precisa de registrar os pedidos, os clientes, produtos, valor total e forma de pagamento. 
+Objetivo: Criar um sistema utilizando o modelo cascata que permita registrar essas informacoes e atender essas necessidades. 
+
+//questao 1 - etapa 2// 
+o sistema precisa ter as funcionalidades de informar o nome do cliente, nome e preco dos produtos, calcular a soma total dos pedidos e as formas de pagamento. 
+
+//questao 1 - etapa 3// 
+as informacoes seriam organizadas em LIST, assim poderiamos armazenar varios produtos em um LIST melhorando a organizacao.
+
+//questao 1 - etapa 5// 
+Teste 1
+
+Situação: cliente adiciona um produto de R$ 100.
+
+Resultado esperado: total = R$ 100.
+
+Resultado obtido: total = R$ 100.
+
+Teste 2
+
+Situação: cliente adiciona produtos de R$ 100 e R$ 50.
+
+Resultado esperado: total = R$ 150.
+
+Resultado obtido: total = R$ 150.

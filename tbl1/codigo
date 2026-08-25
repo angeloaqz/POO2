@@ -33,3 +33,75 @@ class Program
         produtos.Add(produto);
     }
 }
+
+//questao 2 - incremento 2// 
+using System;
+using System.Collections.Generic;
+
+class Produto
+{
+    public string Nome;
+    public double Preco;
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Produto> produtos = new List<Produto>();
+
+        produtos.Add(new Produto { Nome = "Mouse", Preco = 100 });
+        produtos.Add(new Produto { Nome = "Teclado", Preco = 200 });
+        produtos.Add(new Produto { Nome = "Headset", Preco = 150 });
+
+        List<Produto> carrinho = new List<Produto>();
+
+        Console.WriteLine("Produtos disponíveis:");
+
+        for (int i = 0; i < produtos.Count; i++)
+        {
+            Console.WriteLine((i + 1) + " - " + produtos[i].Nome + " - R$ " + produtos[i].Preco);
+        }
+
+        Console.Write("Escolha um produto: ");
+        int escolha = int.Parse(Console.ReadLine());
+
+        carrinho.Add(produtos[escolha - 1]);
+
+        Console.WriteLine("\nCarrinho:");
+
+        foreach (Produto produto in carrinho)
+        {
+            Console.WriteLine(produto.Nome + " - R$ " + produto.Preco);
+        }
+
+        double total = 0;
+
+        foreach (Produto produto in carrinho)
+        {
+            total += produto.Preco;
+        }
+
+        Console.WriteLine("\nTotal: R$ " + total);
+
+        Console.WriteLine("\nDeseja remover o produto?");
+        Console.WriteLine("1 - Sim");
+        Console.WriteLine("2 - Não");
+
+        int remover = int.Parse(Console.ReadLine());
+
+        if (remover == 1)
+        {
+            carrinho.RemoveAt(0);
+        }
+
+        Console.WriteLine("\nForma de pagamento:");
+        Console.WriteLine("1 - Pix");
+        Console.WriteLine("2 - Cartão");
+        Console.WriteLine("3 - Dinheiro");
+
+        int pagamento = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nCompra finalizada!");
+    }
+}

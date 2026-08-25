@@ -24,3 +24,18 @@ Situação: cliente adiciona produtos de R$ 100 e R$ 50.
 Resultado esperado: total = R$ 150.
 
 Resultado obtido: total = R$ 150.
+
+//questao 1 - alteracao de requisito// 
+uma alteracao de requisito afetaria principalmente as etapas de analise, projeto, implementacao e testes. no modelo cascata uma alteracao depois que o projeto ja foi concluido nao é o correto pois seria necessario voltar as etapas anteriores e altera-las.
+
+//questao 2 - 1// 
+no primeiro incremento foram desenvolvidas a definicao dos produtos, adicao de produtos no carrinho e a visualizacao destes produtos. no final do incremento 1 o sistema ja funcionava basicamente. 
+
+//questao 2 - 2//
+no segundo incremento foram acrescentadas as funcoes de calculo do valor total, remocao dos produtos do carrinho e a escolha da forma de pagamento. 
+
+//questao 2 - 3// 
+foi necessario modificar o incremento 1 para permitir o calculo total dos produtos, remocao dos produtos e escolha da forma de pagamento. se preservou a estrutura inicial do carrinho e dos produtos e so adicionou novas funcionalidades nelas. 
+
+//questao 2 - alteracao de requisito//
+essa funcionalidade de adicionar 10% de desconto nos produtos acima de R$500 poderia ser incorporada no incremento 2 pq nesse incremento ja e realizado o calculo total do pedido.

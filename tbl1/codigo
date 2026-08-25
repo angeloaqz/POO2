@@ -1,0 +1,35 @@
+//questao 1 - etapa 4// 
+using System;
+using System.Collections.Generic;
+
+class Produto
+{
+    public string Nome;
+    public double Preco;
+}
+
+class Program
+{
+    static void Main()
+    {
+        string cliente;
+        string formaPagamento;
+
+        List<Produto> produtos = new List<Produto>();
+
+        Console.Write("Digite o nome do cliente: ");
+        cliente = Console.ReadLine();
+
+        Console.Write("Digite o nome do produto: ");
+        string nomeProduto = Console.ReadLine();
+
+        Console.Write("Digite o preço do produto: ");
+        double precoProduto = double.Parse(Console.ReadLine());
+
+        Produto produto = new Produto();
+        produto.Nome = nomeProduto;
+        produto.Preco = precoProduto;
+
+        produtos.Add(produto);
+    }
+}
